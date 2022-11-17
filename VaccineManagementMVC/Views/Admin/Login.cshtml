@@ -76,30 +76,29 @@ FormMethod.Post, new { @class = "card-body cardbody-color p-lg-5" }))
 
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form3Example3">Email Id</label>
-                            <input type="text"
+                            <label class="form-label" for="form3Example3"><b>Email Id</b></label>
+                            <input type="email"
                                    id="form3Example3" name="email"
                                    class="form-control form-control-lg"
                                    placeholder="Enter a valid Email Id" required />
-
                         </div>
-
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                            <label class="form-label" for="form3Example4">Password</label>
+                            <label class="form-label" for="form3Example4"><b>Password</b></label>
                             <input type="password"
-                                   id="form3Example4" name="password"
+                                   id="pass" name="password"
                                    class="form-control form-control-lg"
-                                   placeholder="Enter password" required />
-
+                                   placeholder="Enter password" required  @*pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"*@/>
+                            <span id="span" style="color:red"></span>
                         </div>
 
-
-                        <div class="d-flex justify-content-between align-items-center">
+                        <br />
+                        
+                        <!--<div class="d-flex justify-content-between align-items-center">-->
                             <!-- Checkbox -->
 
-                            <a href="#!" class="text-body">Forgot password?</a>
-                        </div>
+                            <!--<a href="#!" class="text-body">Forgot password?</a>
+                        </div>-->
 
                         <div class="text-center text-lg-start mt-4 pt-2">
                             <button type="submit"
@@ -118,5 +117,14 @@ FormMethod.Post, new { @class = "card-body cardbody-color p-lg-5" }))
         </div>
 
     </section>
+    <script>
+        var input = document.getElementById('pass');
+        input.oninvalid = function (event) {
+          //  event.target.setCustomValidity('Username should only contain lowercase letters. e.g. john');
+            var ans = document.getElementById("span");
+            ans.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number";
+        }
+        
+    </script>
 </body>
 </html>
